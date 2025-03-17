@@ -1,6 +1,16 @@
-import { createBlock } from "@/actions";
+import { db } from "@/database";
+import {redirect} from "next/navigation";
 
 export default function BlockCreatePage() {
+  const createBlock = async (formData : FormData) => {
+    "use server";
+    const title = formData.get("title") as string;
+    const code = formData.get("code") as string;
+    const createdBlock = await db.block.create({
+      data: { title, code },
+    });
+    redirect(`blocks/${createdBlock.id}`)
+  };
   return (
     <form action={createBlock}>
       <h3 className="font-bold m-3">Create a Block</h3>

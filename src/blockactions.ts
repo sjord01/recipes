@@ -29,5 +29,21 @@ export const createBlock = async (formData: FormData) => {
   redirect(`/blocks/${createdBlock.id}`);
 };
 
-export const deleteBlock = async () => {};
-export const updateBlock = async () => {};
+export const deleteBlock = async (formData: FormData) => {
+  const blockId = parseInt(formData.get("id") as string);
+  await db.block.delete({
+    where: { id: blockId },
+  });
+  redirect('/');
+};
+
+export const updateBlock = async (formData: FormData) => {
+  const blockId = parseInt(formData.get("id") as string);
+  const title = formData.get("title") as string;
+  const code = formData.get("code") as string;
+  const updatedBlock = await db.block.update({
+    where: { id: blockId },
+    data: { title, code },
+  });
+  redirect('/');
+};

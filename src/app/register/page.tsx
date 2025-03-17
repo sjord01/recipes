@@ -1,4 +1,4 @@
-import { register } from "@/actions";
+import { register } from "@/blockactions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

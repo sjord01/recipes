@@ -1,4 +1,4 @@
-import { createBlock } from "@/actions";
+import { createBlock } from "@/blockactions";
 
 export default function BlockCreatePage() {
 

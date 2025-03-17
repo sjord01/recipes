@@ -2,11 +2,11 @@
 import { db } from "@/database";
 import { redirect } from "next/navigation";
 
-export const register() {
-  
+export const register = async () => {
+
 }
 // Authentication Logion
-export const login(formData: FormData) {
+export const login = async (formData: FormData) => {
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
   const foundUser = await db.user.findUnique({
